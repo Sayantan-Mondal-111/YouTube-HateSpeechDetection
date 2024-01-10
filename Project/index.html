@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hate Comment Detection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+
+    <script language="Javascript">
+        function validateForm() {
+            var x = document.getElementById('comment').value;
+            if (x == "") {
+                alert("Text must be filled out");
+                return false;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="inner">
+            <form action="/" method="POST">
+                <h3>Hate Comment Detection</h3>
+                <p>Predict if a comment is a hate comment or not!</p>
+                <br>
+                <p>Enter your comment here:</p>
+                <p>
+                    <textarea rows="5" cols="50" id="comment" name="comment" type="text"></textarea>
+                </p>
+                <p>
+                    <button onclick="return validateForm()">Predict
+                        <i class="zmdi zmdi-arrow-right"></i>
+                    </button>
+                    &emsp;
+                    <button onclick="document.getElementById('comment').value = ''">Clear<i
+                            class="zmdi zmdi-arrow-right"></i></button>
+                </p>
+            </form>
+            <br>
+            <div>
+                <p class="result">
+                    {{ comment }}
+                </p>
+                <p class="highlight">
+                    {{ pred }}
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
